@@ -29,7 +29,7 @@ The benefits of testing include preventing bugs, reducing development costs and 
 ### Testing pyramid
 The testing pyramid is a framework that can be used to help form a strategy for developers to create quality software
 
-
+```
          / end-to-end tests - checks the bulk of the code. eg. on whole user path login
         /                     -> use of the features
        /                    - can be slow and difficult to maintain
@@ -37,10 +37,10 @@ The testing pyramid is a framework that can be used to help form a strategy for 
      /                    - eg. how two or more components operate together or how
     /                       a component works with an external service such as api
    /                      - they are generally slower
-  / Unit tests - testing individual components or functinalities (providing a foundation)
+  / Unit tests - testing individual components or functionalities (providing a foundation)
  /             - they should be smaller and faster, therefore 'costing' less
 /              - and should be the majority of the tests
-
+```
 
 ### Unit tests
 
