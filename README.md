@@ -1,70 +1,85 @@
-# Getting Started with Create React App
+## What is software testing?
+Software testing is the process of evaluating and verifying that a software product or application does what it is supposed to do.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Why write tests for your software?
+The benefits of testing include preventing bugs, reducing development costs and improving performance.
 
-In the project directory, you can run:
+- Protection against bugs
+  Substantial research suggests that applying testing to an application can reduce production bug density by 40% — 80%.
 
-### `npm start`
+- Confidence
+  You can add changes, reuse the code or refactor the code which is fairly common. When tests exist you can be sure the functionality is not broken when changing the code behind it.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Documentation
+  Tests can show the flow and behaviour or code clearly, providing a nice form of documentation for someone new to the code
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Industry Standard
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## What types of software testing are there?
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- unit
+- integration
+- end-to-end
+- contract
+- api tests
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Testing pyramid
+The testing pyramid is a framework that can be used to help form a strategy for developers to create quality software
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+         / end-to-end tests - checks the bulk of the code. eg. on whole user path login
+        /                     -> use of the features
+       /                    - can be slow and difficult to maintain
+      / Integration tests - testing small portions of code
+     /                    - eg. how two or more components operate together or how
+    /                       a component works with an external service such as api
+   /                      - they are generally slower
+  / Unit tests - testing individual components or functinalities (providing a foundation)
+ /             - they should be smaller and faster, therefore 'costing' less
+/              - and should be the majority of the tests
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Unit tests
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Unit testing is a type of testing which is found at the bottom of the software testing pyramid. It involves breaking the codebase down into smaller parts (or units) and testing those in isolation.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Depending on the type of programming language (or paradigm) these can be against anything you define as a unit, although the most common practice is against functions.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Test driven development (TDD)
+The practice of writing tests before the code. The goal is to make the failing The tests will fail, and the goal is to make the failing test pass. So the developer writes the bare minimum to make the test pass, when passing the developer can go back to refactor the code for readabiltity knowing the tests are present for safety.
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Jest
+A testing framework for JavaScript https://jestjs.io/
 
-### Analyzing the Bundle Size
+```
+describe('my function or component', () => {
+  test('does the following', () => {
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+  });
+});
+```
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Testing evironments
+To make testing easier and build in to your project, it will take some configuration. create-react-app comes with testing functionality built in.
+Usually you would have to run something like the following scripts but now they are already installed and you can check in `package.json`
 
-### Advanced Configuration
+install jest + dependencies to allow the test envoronment to run
+      `npm install --save-dev jest`
+      `npm install -D @testing-library/jest-dom`
+      `npm install -D @testing-library/react`
+      `npm install -D @testing-library/user-event`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### React Testing Library
+react-testing-library is a library which extends the jest framework to allow us to test react components and user interactions.
 
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [jest-dom](https://github.com/testing-library/jest-dom) The @testing-library/jest-dom library provides a set of custom jest matchers that you can use to extend jest. These will make your tests more declarative, clear to read and to maintain.
+- [react testing library queries](https://testing-library.com/docs/queries/about) is how you access the elements to test

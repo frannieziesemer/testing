@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
 
 function App() {
+  const [greeting, setGreeting] = useState("");
+  const showGreeting = () => {
+    setGreeting("Hello There!");
+  };
+  const hideGreeting = () => {
+    setGreeting("");
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h2>Greetings App</h2>
+      <button onClick={showGreeting}>Hi</button>
+      <h3>{greeting}</h3>
+      <button onClick={hideGreeting}>Bye</button>
     </div>
   );
 }
